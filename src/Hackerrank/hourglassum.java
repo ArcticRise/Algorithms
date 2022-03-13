@@ -23,7 +23,6 @@ class Result {
         return max;
 
     }
-
 }
 
 public class hourglassum {
