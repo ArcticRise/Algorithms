@@ -19,32 +19,29 @@ Return the simplified canonical path.
 
 
 public class SimplifyPath {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String path = "/../"; // Expected / as ans
-        System.out.println(Solution.simplifyPath(path));
+        System.out.println(simplifyPath(path));
 
         String path2 = "/home//foo/"; // Expected /home/foo as ans
-        System.out.println(Solution.simplifyPath(path2));
+        System.out.println(simplifyPath(path2));
     }
-}
 
-
-class Solution {
     public static String simplifyPath(String path) {
         List<String> arr = new ArrayList<>();
         String[] split_arr = path.split("/");
-        for(String s: split_arr){
-            if(s.equals("") || s.equals(".")){
+        for (String s : split_arr) {
+            if (s.equals("") || s.equals(".")) {
                 continue;
             }
-            if(!s.equals("..")){
+            if (!s.equals("..")) {
                 arr.add(s);
-            }else{
-                if(arr.size() != 0){
-                    arr.remove(arr.size()-1);
+            } else {
+                if (arr.size() != 0) {
+                    arr.remove(arr.size() - 1);
                 }
             }
         }
-        return "/"+String.join("/",arr);
+        return "/" + String.join("/", arr);
     }
 }
